@@ -1,0 +1,35 @@
+void calculateCOCOMO(double KLOC);
+
+int main() {
+    double KLOC;
+
+    // Input the estimated lines of code (in thousands)
+    printf("Enter estimated lines of code (in thousands): ");
+    scanf("%lf", &KLOC);
+
+    // Calculate COCOMO
+    calculateCOCOMO(KLOC);
+
+    return 0;
+}
+
+void calculateCOCOMO(double KLOC) {
+    double effort, duration, staffing;
+
+    // COCOMO parameters
+    double a = 2.4;   // constant
+    double b = 1.05;  // constant
+
+    // Calculate effort
+    effort = a * pow(KLOC, b);
+
+    // Calculate duration and staffing
+    duration = 2.5 * pow(effort, 0.38);
+    staffing = effort / duration;
+
+    // Output the results
+    printf("\nResults for COCOMO model:\n");
+    printf("Effort: %.2f person-months\n", effort);
+    printf("Duration: %.2f months\n", duration);
+    printf("Staffing: %.2f persons\n", staffing);
+}
